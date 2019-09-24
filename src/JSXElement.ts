@@ -42,4 +42,14 @@ export class JSXElement {
   get text(): string | null {
     return this._text;
   }
+
+  render(): string {
+    return `<${this.name} ${this.attributes.map(a => {
+        if (a.name) {
+          return `${a.name}=${a.value}`
+        }
+        return a.value;
+      }).join(' ')}${this.children.length === 0 ? '/' : ''}>`
+      + this.children.map(c => c.render()).join('') + (this.children.length === 0 ? '' : `</${this.name}>`);
+  }
 }
