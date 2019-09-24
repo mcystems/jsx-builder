@@ -1,0 +1,11 @@
+*.swp
+node_modules
+npm-debug.log
+.nyc_output
+coverage
+*.iml
+.idea
+build
+dist
+package-lock.json
+jsxbuiler.iml

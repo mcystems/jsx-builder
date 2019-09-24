@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "declaration": true,
+    "pretty": true,
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "plugins": [
+      {
+        "transform": "ts-optchain/transform"
+      }
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": true,
+  "include": [
+    "src/**/*.ts"
+  ]
+}
