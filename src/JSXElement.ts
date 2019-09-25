@@ -8,14 +8,14 @@ export class JSXElement {
 
   }
 
-  element(name: string, attribute: JSXAttribute, text: string): JSXElement {
-    const newElement = new JSXElement(this, name, text);
-    newElement.attribute(attribute);
-    return newElement;
+  element(name: string, text: string): JSXElement {
+    const e = new JSXElement(this, name, text);
+    this._children.push(e);
+    return e;
   }
 
-  attribute(attribute: JSXAttribute): this {
-    this._attributes.push(attribute);
+  attribute(name: string | null, value: string): this {
+    this._attributes.push(new JSXAttribute(name, value));
     return this;
   }
 
@@ -44,12 +44,9 @@ export class JSXElement {
   }
 
   render(): string {
-    return `<${this.name} ${this.attributes.map(a => {
-        if (a.name) {
-          return `${a.name}=${a.value}`
-        }
-        return a.value;
-      }).join(' ')}${this.children.length === 0 ? '/' : ''}>`
-      + this.children.map(c => c.render()).join('') + (this.children.length === 0 ? '' : `</${this.name}>`);
+    return `<${this.name}${this.attributes.length > 0 ? ' ' : ''}${this.attributes.map(a => a.render())
+        .join(' ')}${this.children.length === 0 ? '/' : ''}>`
+      + (this.text ? this.text : '') + this.children.map(c => c.render())
+        .join('') + (this.children.length === 0 ? '' : `</${this.name}>`);
   }
 }
