@@ -1,10 +1,11 @@
 {
-  "name": "jsxbuiler",
-  "version": "0.0.1",
+  "name": "jsxbuilder",
+  "version": "0.0.3",
   "description": "",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "prepare": "tsc"
   },
   "repository": {
     "type": "git",
